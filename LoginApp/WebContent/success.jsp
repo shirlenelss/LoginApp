@@ -13,6 +13,6 @@
 <%
 User user = (User) session.getAttribute("user");
 %>
-Hello <%user.getUsername(); %>!
+Hello <%=user.getUsername() %>!
 </body>
 </html>

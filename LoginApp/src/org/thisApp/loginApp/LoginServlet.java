@@ -2,6 +2,7 @@ package org.thisApp.loginApp;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,15 +34,13 @@ public class LoginServlet extends HttpServlet {
 		String userID = request.getParameter("userID");
 		String password = request.getParameter("password");
 		
-		System.out.print(userID + " " + password);
 		LoginService loginService = new LoginService();
 		boolean result = loginService.authenticatePassword(userID, password);
 		if (result) {
 			User user = loginService.getUserDetails(userID);
 			request.getSession().setAttribute("user", user);
-			response.sendRedirect("success.jsp");
-			//RequestDispatcher dispatcher = request.getRequestDispatcher("success.jsp");
-			//dispatcher.forward(request, response );
+			RequestDispatcher dispatcher = request.getRequestDispatcher("success.jsp");
+			dispatcher.forward(request, response );
 			return;
 		} else {
 			response.sendRedirect("login.jsp");
