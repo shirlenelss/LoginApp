@@ -1,19 +1,19 @@
 package org.thisApp.dto;
 
 public class User {
-	String userID;
-	String username;
+	String userId;
+	String userName;
 	
 	public String getUserID() {
-		return userID;
+		return userId;
 	}
 	public void setUserID(String userID) {
-		this.userID = userID;
+		this.userId = userID;
 	}
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 }

@@ -7,27 +7,26 @@ import org.thisApp.dto.User;
 
 public class LoginService {
 
-	HashMap<String,String> users = new HashMap<String,String>();
+	HashMap<String,String> usersList = new HashMap<String,String>();
 	
 	public LoginService() {
-		users.put("1", "Tricia");
-		users.put("2", "Dora");
-		users.put("3", "Shirlene");		
+		usersList.put("1", "Tricia");
+		usersList.put("2", "Dora");
+		usersList.put("3", "Shirlene");		
 		
 	}
 	
 	public boolean authenticatePassword(String userID, String password){
 		if (password.trim() == "" || password == null) {
 			return false;
-		} else {
-			return true;
-		}
+		} 
+		return true;		
 	}
 	 
-	public User getUserDetails(String userID) {
+	public User getUserDetails(String userId) {
 		User user = new User();
-		user.setUsername(users.get(userID));
-		user.setUserID(userID);
+		user.setUserName(usersList.get(userId));
+		user.setUserID(userId);
 		return user;
 	}
 
