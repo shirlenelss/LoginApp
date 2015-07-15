@@ -31,16 +31,19 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userID = request.getParameter("userID");
+		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
 		
 		LoginService loginService = new LoginService();
-		boolean result = loginService.authenticatePassword(userID, password);
-		if (result) {
-			User user = loginService.getUserDetails(userID);
-			request.getSession().setAttribute("user", user);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("success.jsp");
-			dispatcher.forward(request, response );
+		boolean loginApproved = loginService.authenticatePassword(userId, password);
+		if (loginApproved) {
+			User user = loginService.getUserDetails(userId);
+			//System.out.println("checked : "+ userId + " -->"+user.getUserName());
+			//request.getSession().setAttribute("user", user);
+			//response.sendRedirect("success.jsp");
+			request.setAttribute("user", user);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("success.jsp");		
+			dispatcher.forward(request, response);
 			return;
 		} else {
 			response.sendRedirect("login.jsp");
