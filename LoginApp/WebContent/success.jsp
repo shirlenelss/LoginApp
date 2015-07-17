@@ -11,11 +11,9 @@
 
 <h3>Login successful</h3>
 
-<%
-User user = (User) request.getAttribute("user");
-%>
+<jsp:useBean id="user" class="org.thisApp.dto.User" scope="request"></jsp:useBean>
 
-<!--Hello <%=user.getUserName() %>! -->
-Hello <%=(user !=null ? user.getUserName(): "no user assigned") %>
+	
+Hello <jsp:getProperty property="userName" name="user"/>!
 </body>
 </html>

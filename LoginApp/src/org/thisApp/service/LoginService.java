@@ -13,6 +13,8 @@ public class LoginService {
 		usersList.put("1", "Tricia");
 		usersList.put("2", "Dora");
 		usersList.put("3", "Shirlene");		
+		usersList.put("4", "Queennie");
+		usersList.put("5", "Eugene");		
 		
 	}
 	
